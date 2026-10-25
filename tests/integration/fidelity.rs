@@ -209,7 +209,7 @@ fn rich() -> Transcript<Common> {
 }
 
 /// The targets `continue --with` writes, minus the pull-only and mint-only
-/// ones: the default targets of a fidelity report.
+/// ones: what `txcript check` compares by default.
 const WRITABLE: [HarnessId; 11] = [
     HarnessId::ClaudeCode,
     HarnessId::Codex,

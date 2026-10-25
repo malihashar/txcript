@@ -60,7 +60,7 @@ than none.
 
 ## Conversion fidelity
 
-What converting *into* each harness loses, measured by `txcript::fidelity` on one synthetic session that has every kind of block: signed and unsigned thinking, a Bash call with a description, an edit, an MCP call with a structured result, an error result, a slash command, an image, token usage, stop reasons, per-message models, a title, a git branch. Each cell names the categories that were lost or changed (`ok`: nothing). Items the target only made up, and message timestamps, are not listed.
+What converting *into* each harness loses, measured by `txcript check` (see [Fidelity](../usage.md#fidelity)) on one synthetic session that has every kind of block: signed and unsigned thinking, a Bash call with a description, an edit, an MCP call with a structured result, an error result, a slash command, an image, token usage, stop reasons, per-message models, a title, a git branch. Each cell names the categories that were lost or changed (`ok`: nothing). Items the target only made up, and message timestamps, are not listed.
 
 | Target | Content | Accounting | Metadata |
 | --- | --- | --- | --- |
@@ -76,4 +76,4 @@ What converting *into* each harness loses, measured by `txcript::fidelity` on on
 | antigravity | lost: tool_call, tool_args, tool_result | lost: message_model | lost: model; changed: title |
 | cowork | ok | changed: stop_reason | ok |
 
-The `tool_call` and `tool_result` losses are the slash command, which several formats have no way to record; `tool_name` is it written as `_release`. Hermes, Amp, Simple, and `grok_bot` are measured too (see the golden table in `tests/integration/fidelity.rs`) but are not listed here: `continue` cannot write the first three, and `grok_bot` mints a live agent. The measurement is codec-level: it does not include what a store adds, such as artifact files. It is a regression oracle as well as documentation: `tests/integration/fidelity.rs` fails when the table drifts from the codecs, and prints the rows to paste.
+The `tool_call` and `tool_result` losses are the slash command, which several formats have no way to record; `tool_name` is it written as `_release`. Hermes, Amp, and Simple can be rendered but not written by `continue`, and `grok_bot` mints a live agent, so `check` leaves them out of its default table. The measurement is codec-level: it does not include what a store adds, such as artifact files. It is a regression oracle as well as documentation: `tests/integration/fidelity.rs` fails when the table drifts from the codecs, and prints the rows to paste.
