@@ -19,10 +19,13 @@
 //! - [`harness`] — one module per implemented harness.
 //! - [`dispatch`] — parse or render a harness's native text, chosen by
 //!   [`HarnessId`] at run time.
+//! - [`fidelity`] — what converting into a harness loses, measured before
+//!   anything is written.
 
 pub mod common;
 pub mod dispatch;
 pub mod error;
+pub mod fidelity;
 pub mod harness;
 #[cfg(not(target_arch = "wasm32"))]
 pub mod local;
